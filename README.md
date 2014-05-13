@@ -1,6 +1,7 @@
 Suffix tree behavior
 ====================
-Behavior for use suffix tree
+Behavior for use suffix tree.
+This behavior attached to your model for usage hierarchical structure.
 
 Installation
 ------------
@@ -27,5 +28,29 @@ Usage
 
 Once the extension is installed, simply use it in your code by  :
 
+Add in your model behaviors method:
+
 ```php
-<?= \singrana\behaviors\AutoloadExample::widget(); ?>```
+public function behaviors()
+{
+	return
+	[
+		...
+
+		'suffixTree'		=>
+		[
+			'class'			=>	'singrana\behaviors\SuffixBehavior',
+		],
+		...
+	];
+}
+```
+
+You can configure behavior:
+
+fieldKey - attribute for storage suffix key;
+fieldTranslit - attribute for storage translit, null if not need;
+fieldUrl - attribute for storage Url, null if not need;
+fieldParent - attribute for storage parent field, null if not need different trees storage;
+fieldParentId - attribute for parent node Id;
+fieldLevel - attribute for storage level node, null if not need;

@@ -4,14 +4,17 @@
     "type": "yii2-extension",
     "keywords": ["yii2","extension"," suffixTree"," behavior"],
     "license": "MIT",
-    "authors": [
+    "authors":
+    [
         {
             "name": "Singrana",
             "email": "singrana@singrana.com"
         }
     ],
-    "autoload": {
-        "psr-4": {
+    "autoload":
+    {
+        "psr-4":
+        {
             "singrana\\behaviors\\": ""
         }
     }
