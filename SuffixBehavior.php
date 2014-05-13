@@ -1,6 +1,6 @@
 <?php
 
-namespace app\singrana\core\behaviors;
+namespace singrana\behaviors;
 
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
@@ -149,7 +149,7 @@ class SuffixBehavior extends Behavior
 				$arr[$this->fieldParent]=$this->owner->{$this->fieldParent};
 
 			if (!$this->parentNode = $model::find()->andWhere($arr)->one())
-				throw new NotFoundHttpException('Нарушена целостность дерева');
+				throw new NotFoundHttpException('Integrity tree corrupt');
 
 			$key = $this->parentNode->{$this->fieldKey};
 		}
@@ -207,14 +207,14 @@ class SuffixBehavior extends Behavior
 				$arr[$this->fieldParent]=$this->owner->{$this->fieldParent};
 
 			if (!$this->parentNode = $model::find()->andWhere($arr)->one())
-				throw new NotFoundHttpException('Нарушена целостность дерева');
+				throw new NotFoundHttpException('Integrity tree corrupt');
 
 		}
 
 		// Get current record (before save data)
 		$current=$model::find()->andWhere([$this->fieldId => $this->owner->{$this->fieldId}])->one();
 		if(!$current)
-			throw new NotFoundHttpException('The requested page does not exist.');
+			throw new NotFoundHttpException('The requested node does not exist.');
 
 		if (strlen($current->{$this->fieldKey}) > 3)
 		{
